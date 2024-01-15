@@ -1,14 +1,14 @@
-<mat-grid-list  cols="6" rowHeight="2:1" role="listitem">
+<mat-grid-list cols="6" rowHeight="2:1" role="listitem">
     <mat-grid-tile rowspan="6">
         <mat-grid-tile-header>ALL ITEM LISTS</mat-grid-tile-header>
         <div class="item-list">
-            <app-items-list></app-items-list>
+            <app-items-list (sendToParent)="responseFromChild($event)"></app-items-list>
         </div>
     </mat-grid-tile>
     <mat-grid-tile colspan="5" rowspan="3">
         <mat-grid-tile-header>VIEW ITEM DETIALS</mat-grid-tile-header>
         <div class="items-detail">
-            <app-items-detail></app-items-detail>
+            <app-items-detail [detailData]="detailData"></app-items-detail>
         </div>
     </mat-grid-tile>
     <mat-grid-tile colspan="5" rowspan="3">

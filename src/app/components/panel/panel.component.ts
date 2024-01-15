@@ -1,6 +1,6 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { combineLatest } from 'rxjs';
+import { Component, OnInit, OnChanges, SimpleChange, ChangeDetectorRef } from '@angular/core';
 import { ItemdataService } from '../../service/itemdata.service';
+import { Item } from '../../service/itemdata.service';
 
 @Component({
   selector: 'app-panel',
@@ -9,15 +9,22 @@ import { ItemdataService } from '../../service/itemdata.service';
 })
 
 export class PanelComponent implements OnInit {
-  constructor(private itemService: ItemdataService) { }
+  constructor(private itemService: ItemdataService, private cdr: ChangeDetectorRef) { }
 
   data: any = [];
+  detailData: any = [];
 
   ngOnInit(): void {
-
+    this.cdr.detectChanges();
   }
 
-  OnChanges() {
-    console.log("aaaaaa")
+  responseFromChild($eventValue: Item) {
+    const detail = $eventValue;
+    this.detailData = detail;
+  }
+
+  deleteItemData($eventValue:string){
+    const data = this.itemService.items$;
+    console.log("jldjsjdfk", data);
   }
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 export interface Item {
+  _id:string,
   title:string,
   description:string
 }
@@ -22,8 +23,16 @@ export class ItemdataService {
   }
 
   public addNewItem(newItem:Item) {
+    newItem._id = this.uniquString();
     const currentItems = this.itemSubject.value;
     const updatedItems = [...currentItems, newItem];
     this.itemSubject.next(updatedItems);
+  }
+
+  public deleteItem(id:string){
+    const deletedData = this.itemSubject.value.filter(item=>{
+      return item._id !== id;
+    })
+    this.itemSubject.next(deletedData);
   }
 }

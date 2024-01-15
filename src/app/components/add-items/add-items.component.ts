@@ -7,7 +7,7 @@ import { ItemdataService } from '../../service/itemdata.service';
   styleUrl: './add-items.component.scss',
 })
 export class AddItemsComponent implements OnInit {
-  newItem = { title: '', description: '' };
+  newItem = {_id:'',  title: '', description: '' };
   constructor(private itemDataService: ItemdataService) { }
 
   ngOnInit(): void {
@@ -15,7 +15,7 @@ export class AddItemsComponent implements OnInit {
   }
 
   initializeData() {
-    this.newItem = { title: '', description: '' }
+    this.newItem = {_id:'',  title: '', description: '' }
   }
 
   handleClickAddNewItems() {

@@ -1,11 +1,13 @@
 <div>
-    <h1>this is the test</h1>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <p>thkdjkjfkdlsjejkjf</p>
-    <button>DELETE</button>
+    @for (item of detailData; track $index) {
+        <div>
+            <h1>{{item.title}}</h1>
+        </div>
+        <div>
+            <p>{{item.description}}</p>
+        </div>
+    }
+    <div class="action">
+        <button mat-raised-button color="warn" (click)="onClickDeleteButton(detailData[0]._id)">DELETE</button>
+    </div>
 </div>
