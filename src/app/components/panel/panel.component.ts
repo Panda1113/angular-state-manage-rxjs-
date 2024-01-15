@@ -22,9 +22,4 @@ export class PanelComponent implements OnInit {
     const detail = $eventValue;
     this.detailData = detail;
   }
-
-  deleteItemData($eventValue:string){
-    const data = this.itemService.items$;
-    console.log("jldjsjdfk", data);
-  }
 }
